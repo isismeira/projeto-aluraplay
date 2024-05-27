@@ -1,0 +1,61 @@
+.cabecalho__container {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*Separa os itens: um no começo outro no meio e outro no fim*/
+    justify-content: space-between;
+
+    /*Coloca todos os elementos no centro do eixo Y(cross-axis)*/
+    align-items: center;
+
+    /*Deixa o cabeçalho fixo mesmo com a rolagem da tela*/
+    position: fixed;
+
+    top: 0;
+}
+
+/*Não exibe a barra de pesquisa naturalmente*/
+.cabecalho__pesquisar__item {
+    display: none;
+}
+
+
+@media (min-width: 834px) {
+    /*Exibe a barra de pesquisa para telas maiores que 848px (dispositivos mobile)*/
+    .cabecalho__pesquisar__item{
+        display: block
+    }
+
+    /*Os ítens são distribuídos de forma igual ao longo da linha; o primeiro ítem junto à borda inicial da linha, o último junto à borda final da linha.*/
+    .rodape__container{
+        justify-content: space-between;
+    }
+}
+
+.rodape__container {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*Coloca os elementos em coluna, de cima para baixo*/
+    flex-direction: column;
+    /*Os elementos vão quebrar em múltiplas linhas, de cima para baixo*/
+    flex-wrap: wrap;
+        /*A shorthand para flex-direction e flex-wrap é flex-flow: column wrap*/
+}
+
+.superior__secao__container {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*Coloca todos os elementos no centro do eixo Y(cross-axis)*/
+    align-items: center;
+
+    /*Sequences of whitespace will collapse into a single whitespace. Text will never wrap to the next line. The text continues on the same line until a <br> tag is encountered*/
+    white-space: nowrap;
+
+    /*Adiciona um scroll*/
+    overflow: scroll;
+
+    /*Aplica um espaçamento entre os itens*/
+    gap: 15px
+}
