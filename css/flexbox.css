@@ -1,3 +1,4 @@
+/*CABEÇALHO*/
 .cabecalho__container {
     /*Indica que o container está num contexto flex*/
     display: flex;
@@ -14,6 +15,7 @@
     top: 0;
 }
 
+/*CABEÇALHO MEDIA QUERY*/
 /*Não exibe a barra de pesquisa naturalmente*/
 .cabecalho__pesquisar__item {
     display: none;
@@ -26,6 +28,7 @@
         display: block
     }
 
+    /*RODAPÉ*/
     /*Os ítens são distribuídos de forma igual ao longo da linha; o primeiro ítem junto à borda inicial da linha, o último junto à borda final da linha.*/
     .rodape__container{
         justify-content: space-between;
@@ -43,6 +46,7 @@
         /*A shorthand para flex-direction e flex-wrap é flex-flow: column wrap*/
 }
 
+/*SEÇÃO SUPERIOR*/
 .superior__secao__container {
     /*Indica que o container está num contexto flex*/
     display: flex;
@@ -58,4 +62,177 @@
 
     /*Aplica um espaçamento entre os itens*/
     gap: 15px
+}
+
+/*MENU*/
+.menu__container {
+    /*Deixa o menu fixo mesmo com a rolagem da tela*/
+    position: fixed;
+    bottom: 0%;
+
+    /*Deixa o menu no rodapé da verão mobile first*/
+    height: 74px;
+    width: 100%;
+}
+
+.menu__lista {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*os ítens são distribuídos na linha com o mesmo espaçamento entre eles.*/
+    justify-content: space-around;
+
+    height: 100%;
+}
+
+.menu__lista li {
+    /*os itens se alinham no centro do contêiner*/
+    align-self: center;
+}
+
+.menu__itens {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*Indica que o contêiner está em um conceito de coluna, de cima para baixo (o ícone em cima do nome)*/
+    flex-direction: column;
+
+    /*Coloca um espaçamento de 5px entre os elementos*/
+    gap: 5px;
+}
+
+.menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4) {
+    /*Não mostra ao menu completo na versão mobile first, apenas a primeira lista*/
+    display: none;
+}
+
+/*MENU MEDIA QUERY*/
+/*Menu tablet*/
+@media (min-width: 843px) {
+
+    .menu__container{
+        /*Posiciona o menu na lateral*/
+        left: 0;
+        height: auto;
+        width: 74px;
+        top:80px;
+    }
+
+    .menu__lista {
+        /*Organiza os itens em flexbox*/
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 15px;
+        gap: 33px;    
+    }
+}
+
+/*Menu Desktop*/
+@media (min-width: 1440px) {
+    .menu__container {
+        width: 239px;
+        /*Configura uma scrollbar no menu de desktop*/
+        overflow: scroll;
+    }
+
+    /*Exibe todas as listas (que estavam escondidas na versão mobile first) num contexto flex*/
+    .menu__lista:nth-child(2),
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4) {
+        display: flex;
+    }
+
+    .menu__lista {
+        /*O heigth deve deixar de ser 100% para que os outros itens possam ocupar espaço também*/
+        height: auto;
+        padding: 20px 17px 10px 15px;
+    }
+
+    .menu__itens {
+        /*Colocas o itens disposto um ao lado do outro, da esquerda para a direita*/
+        flex-direction: row;
+
+        /*Coloca um espaçamento de 15px entre oselementos*/
+        gap: 15px;
+
+        /*Itens são centralizados no eixo transversal*/
+        align-items: center;
+    }
+
+    .menu__lista:nth-child(3) {
+        /*Define uma orddem para o terceiro bloco de lista*/
+        flex-direction: column-reverse;
+    }
+
+    /*Ordena os itens do quarto bloco de itens*/
+    /*Alguns leitores de tela não interpretam a ordem colocada no CSS e sim do HTML*/
+    .jogos {
+        order: 3;
+    }
+
+    .filmes {
+        order: 2;
+    }
+
+    .premium {
+        order: 1;
+    }
+
+    .maispagina {
+        order: 4;
+    }
+}
+
+/*VÍDEOS*/
+
+.videos__container {
+    /*Indica que o container está num contexto flex*/
+    display: flex;
+
+    /*Os flex items vão quebrar em múltiplas linhas, de cima para baixo*/
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    /*CONSERTAR O PROBLEMA DO ULTIMO VIDEO DESKTOP*/
+    justify-items: center;
+}
+
+.videos__item {
+    height: 303px;
+    width: 280px;
+    
+    /*CONSERTAR O PROBLEMA DO ULTIMO VIDEO DESKTOP*/
+    max-width: 500px;
+    /*TOdos os itens vão crescer proporcionalmente, ocupando todo espaço*/
+    flex-grow: 1;
+}
+
+/* DESCRIÇÃO VIDEOS */
+
+.descricao-video {
+    margin-top: 1rem;
+    display: grid;
+    text-align: start;
+    column-gap: 1rem;
+    row-gap: 10px;
+    grid-template-columns: auto 1fr;
+}
+
+.descricao-video img {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.descricao-video h3 {
+    grid-area: 1 / 2 / 2 / 3;
+    font-weight: 700;
+    color: #444444;
+}
+
+.descricao-video p {
+    grid-area: 2 / 2 / 3 / 3;
+    font-size: 14px;
+    color: #444444;
 }
